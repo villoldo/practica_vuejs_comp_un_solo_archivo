@@ -32,10 +32,15 @@ export default {
 
             // TODO: realizar petición fetch par obtener los datos y mostrar la información en la página
             // Ejemplo de paso de datos de autorización con fetch: https://stackoverflow.com/questions/43842793/basic-authentication-with-fetch
-            let url = 'https://api.github.com/users/{{user}} '
+            let url = 'https://api.github.com/users/{{user}} ';
             fetch(url,{method:'GET'})
             .then(response => response.json())
-            .then(json => console.log(json))
+            .then(data => {
+              const login = ${data.login};
+              const avatar = ${data.avatar_url};
+              const html_url = ${data.html_url};
+              const repos_url = ${data.repos_url};
+            });
         },
         obtenerRepositorios: function() {
             // TODO: Función para obtener los repositorios del usuario desde la API de GítHub
@@ -43,13 +48,21 @@ export default {
 
             // Obtener datos de autenticación de usuario para hacer peticiones
             // autenticadas a la API de GitHub
-            var userAuth = process.env.VUE_APP_USERNAME || "user";
-            var passAuth = process.env.VUE_APP_USERTOKEN || "pass";
+            var userAuth = process.env.VUE_APP_USERNAME || "villoldo";
+            var passAuth = process.env.VUE_APP_USERTOKEN || "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";
 
 
             // TODO: realizar petición fetch par obtener los datos y mostrar la información en la página
             // Ejemplo de paso de datos de autorización con fetch: https://stackoverflow.com/questions/43842793/basic-authentication-with-fetch
-
+            let url = 'https://api.github.com/users/{{user}}/repos';
+            fetch (url,{method:'GET'})
+            .then(response => response.json())
+            .then(data => {
+            const full_name = ${data.full_name};
+            const html_url = ${data.html_url};
+            const description = ${data.description};
+            const forks_count = ${data.forks_count};
+            });
         }
     }
 }
