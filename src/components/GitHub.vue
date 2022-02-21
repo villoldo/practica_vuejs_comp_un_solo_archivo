@@ -36,10 +36,10 @@ export default {
             fetch(url,{method:'GET'})
             .then(response => response.json())
             .then(data => {
-              const login = ${data.login};
-              const avatar = ${data.avatar_url};
-              const html_url = ${data.html_url};
-              const repos_url = ${data.repos_url};
+              const login = data.login;
+              const avatar = data.avatar_url;
+              const html_url = data.html_url;
+              const repos_url = data.repos_url;
             });
         },
         obtenerRepositorios: function() {
@@ -58,10 +58,10 @@ export default {
             fetch (url,{method:'GET'})
             .then(response => response.json())
             .then(data => {
-            const full_name = ${data.full_name};
-            const html_url = ${data.html_url};
-            const description = ${data.description};
-            const forks_count = ${data.forks_count};
+            const full_name = data.full_name;
+            const html_url = data.html_url;
+            const description = data.description;
+            const forks_count = data.forks_count;
             });
         }
     }
