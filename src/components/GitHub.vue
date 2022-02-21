@@ -1,17 +1,17 @@
 <template>
     <div>
-        <!-- TODO: Crear componente GitHub -->
+        <input type="text" placeholder="Introduce nombre de usuario de GitHub" @click="keydown"/>
     </div>
 </template>
 
 <script>
 
-// TODO: Importar componente GitHubRepos
+import GitHubRepos from 'GitHubRepos.vue'
 
 export default {
     name: 'GitHub',
     components: {
-        // TODO: Importar componente GitHubRepos
+        GitHubRepos
     },
     data: function() {
         return {
