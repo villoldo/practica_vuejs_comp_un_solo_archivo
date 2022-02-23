@@ -1,6 +1,20 @@
 <template>
     <div>
-        <input v-model="user" placeholder="Introduce nombre de usuario de GitHub"  v-on:keydown="obtenerUsuario"/>
+        <input v-model="user" placeholder="Introduce nombre de usuario de GitHub" v-show="input" v-on:keydown="obtenerUsuario"/>
+        <div class="alert alert-warning" role="alert"v-show="advertencia">
+            El usuario no existe
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <a href="userData.html_url" class="card-link">URL de Github</a>
+        </div>
+</div>
+
+
     </div>
 </template>
 
@@ -15,8 +29,11 @@ export default {
     },
     data: function() {
         return {
-            // TODO: crear variables de datos para el funcionamiento del componente
-        }
+            input: true,    
+            advertencia: false,
+            card: false,
+            userData: ""
+        } 
     },
     methods: {
         obtenerUsuario: function() {
@@ -24,6 +41,7 @@ export default {
 
             // TODO: Añadir lógica para resetear los cambios en el interfaz: desactivar campo de envío,
             // resetear mensaje de error, mostrar lista de repositorios,...
+                if() 
 
             // Obtener datos de autenticación de usuario para hacer peticiones
             // autenticadas a la API de GitHub
@@ -34,12 +52,9 @@ export default {
             // Ejemplo de paso de datos de autorización con fetch: https://stackoverflow.com/questions/43842793/basic-authentication-with-fetch
             let url = 'https://api.github.com/users/{{user}} ';
             fetch(url,{method:'GET'})
-            .then(response => response.json())
-            .then(data => {
-              const login = data.login;
-              const avatar = data.avatar_url;
-              const html_url = data.html_url;
-              const repos_url = data.repos_url;
+            .then(response => {
+              response.json())
+             .then(data => (this.userData = data)
             });
         },
         obtenerRepositorios: function() {
